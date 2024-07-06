@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Meshes/Voxel.h"
 #include "Chunk.generated.h"
 
 UCLASS() class MINECRAFT_API AChunk : public AActor {
@@ -22,14 +23,19 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable)
-	void GenerateChunk(int32 ChunkX, int32 ChunkY);
+	void GenerateChunk(int32 ChunkX, int32 ChunkY, const FVector& ChunkLocation);
 
 	UPROPERTY(EditAnywhere)
 	int32 ChunkSize;
 
 	UPROPERTY(EditAnywhere)
+	int32 ChunkDepth;
+
+	UPROPERTY(EditAnywhere)
 	float BlockSize;
 
+	FVector ChunkWorldLocation;
+
 private:
-	void SpawnVoxel(int32 X, int32 Y, int32 Z);
+	void SpawnVoxel(int32 X, int32 Y, int32 Z, EVoxelType VoxelType);
 };
