@@ -6,9 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Chunk.generated.h"
 
-UCLASS()
-class MINECRAFT_API AChunk : public AActor
-{
+UCLASS() class MINECRAFT_API AChunk : public AActor {
 	GENERATED_BODY()
 	
 public:	
@@ -24,7 +22,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable)
-	void GenerateChunk();
+	void GenerateChunk(int32 ChunkX, int32 ChunkY);
 
 	UPROPERTY(EditAnywhere)
 	int32 ChunkSize;
